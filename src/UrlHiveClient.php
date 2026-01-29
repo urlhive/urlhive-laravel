@@ -4,9 +4,12 @@ namespace UrlHive\Laravel;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\PendingRequest;
+use UrlHive\Laravel\Resources\LinkListResource;
+use UrlHive\Laravel\Resources\PixelResource;
 use UrlHive\Laravel\Resources\UrlResource;
 use UrlHive\Laravel\Resources\BioResource;
 use UrlHive\Laravel\Resources\AnalyticsResource;
+use UrlHive\Laravel\Resources\WorkspaceResource;
 
 class UrlHiveClient
 {
@@ -49,5 +52,20 @@ class UrlHiveClient
     public function analytics(): AnalyticsResource
     {
         return new AnalyticsResource($this);
+    }
+
+    public function linkLists(): LinkListResource
+    {
+        return new LinkListResource($this);
+    }
+
+    public function workspaces(): WorkspaceResource
+    {
+        return new WorkspaceResource($this);
+    }
+
+    public function pixels(): PixelResource
+    {
+        return new PixelResource($this);
     }
 }

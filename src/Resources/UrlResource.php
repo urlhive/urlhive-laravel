@@ -45,6 +45,20 @@ class UrlResource
     }
 
     /**
+     * List URLs.
+     *
+     * @param array $params
+     * @return array
+     */
+    public function list(array $params = []): array
+    {
+        return $this->client->getHttpClient()
+            ->get('/urls', $params)
+            ->throw()
+            ->json();
+    }
+
+    /**
      * Update a URL.
      *
      * @param string $code
@@ -71,5 +85,33 @@ class UrlResource
             ->delete("/urls/{$code}")
             ->throw()
             ->successful();
+    }
+
+    /**
+     * Toggle URL status.
+     *
+     * @param string $code
+     * @return array
+     */
+    public function toggle(string $code): array
+    {
+        return $this->client->getHttpClient()
+            ->patch("/urls/{$code}/toggle")
+            ->throw()
+            ->json();
+    }
+
+    /**
+     * Export URL statistics.
+     *
+     * @param string $code
+     * @return string
+     */
+    public function export(string $code): string
+    {
+        return $this->client->getHttpClient()
+            ->get("/urls/{$code}/export")
+            ->throw()
+            ->body();
     }
 }
