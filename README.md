@@ -46,7 +46,7 @@ $response = UrlHive::url()->shorten('https://example.com', [
 $details = UrlHive::url()->get('my-link');
 
 // Update URL
-UrlHive::url()->update('my-link', ['destination' => 'https://new-url.com']);
+UrlHive::url()->update('my-link', ['url' => 'https://new-url.com']);
 
 // Toggle URL Status
 // Enables or disables the short link
@@ -87,6 +87,7 @@ UrlHive::bio()->store([
 
 // Add Link to Bio
 $link = UrlHive::bio()->addLink([
+    'username' => 'john.doe',
     'title' => 'My Portfolio',
     'url' => 'https://john.doe/portfolio',
     'icon' => 'briefcase' // Optional icon identifier
