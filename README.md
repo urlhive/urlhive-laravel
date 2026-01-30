@@ -21,7 +21,7 @@ php artisan vendor:publish --tag=urlhive-config
 Add your API credentials to `.env`:
 
 ```env
-URLHIVE_API_URL=https://api.urlhive.net/v1
+URLHIVE_API_URL=https://api.urlhive.net
 URLHIVE_API_TOKEN=your-api-token
 ```
 
