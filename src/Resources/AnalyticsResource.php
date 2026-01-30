@@ -22,7 +22,7 @@ class AnalyticsResource
     public function stats(string $code): array
     {
         return $this->client->getHttpClient()
-            ->get("/urls/{$code}/stats")
+            ->get("/v1/urls/{$code}/stats")
             ->throw()
             ->json();
     }

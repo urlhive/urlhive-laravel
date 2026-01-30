@@ -24,7 +24,8 @@ class UrlHiveClient
     protected function http(): PendingRequest
     {
         if (!$this->http) {
-            $this->http = Http::baseUrl($this->config['base_url'])
+            $baseUrl = $this->config['base_url'] ?? 'https://api.urlhive.net';
+            $this->http = Http::baseUrl($baseUrl)
                 ->withToken($this->config['api_token'])
                 ->timeout($this->config['timeout'] ?? 15)
                 ->acceptJson()

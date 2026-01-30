@@ -21,7 +21,7 @@ class PixelResource
     public function list(): array
     {
         return $this->client->getHttpClient()
-            ->get('/pixels')
+            ->get('/v1/pixels')
             ->throw()
             ->json();
     }
@@ -35,7 +35,7 @@ class PixelResource
     public function create(array $data): array
     {
         return $this->client->getHttpClient()
-            ->post('/pixels', $data)
+            ->post('/v1/pixels', $data)
             ->throw()
             ->json();
     }
@@ -49,7 +49,7 @@ class PixelResource
     public function get(string $id): array
     {
         return $this->client->getHttpClient()
-            ->get("/pixels/{$id}")
+            ->get("/v1/pixels/{$id}")
             ->throw()
             ->json();
     }
@@ -64,7 +64,7 @@ class PixelResource
     public function update(string $id, array $data): array
     {
         return $this->client->getHttpClient()
-            ->patch("/pixels/{$id}", $data)
+            ->patch("/v1/pixels/{$id}", $data)
             ->throw()
             ->json();
     }
@@ -78,7 +78,7 @@ class PixelResource
     public function delete(string $id): bool
     {
         return $this->client->getHttpClient()
-            ->delete("/pixels/{$id}")
+            ->delete("/v1/pixels/{$id}")
             ->throw()
             ->successful();
     }

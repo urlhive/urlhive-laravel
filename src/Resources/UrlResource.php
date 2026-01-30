@@ -25,7 +25,7 @@ class UrlResource
         $payload = array_merge(['url' => $url], $options);
 
         return $this->client->getHttpClient()
-            ->post('/shorten', $payload)
+            ->post('/v1/shorten', $payload)
             ->throw()
             ->json();
     }
@@ -39,7 +39,7 @@ class UrlResource
     public function get(string $code): array
     {
         return $this->client->getHttpClient()
-            ->get("/urls/{$code}")
+            ->get("/v1/urls/{$code}")
             ->throw()
             ->json();
     }
@@ -53,7 +53,7 @@ class UrlResource
     public function list(array $params = []): array
     {
         return $this->client->getHttpClient()
-            ->get('/urls', $params)
+            ->get('/v1/urls', $params)
             ->throw()
             ->json();
     }
@@ -68,7 +68,7 @@ class UrlResource
     public function update(string $code, array $data): array
     {
         return $this->client->getHttpClient()
-            ->patch("/urls/{$code}", $data)
+            ->patch("/v1/urls/{$code}", $data)
             ->throw()
             ->json();
     }
@@ -82,7 +82,7 @@ class UrlResource
     public function delete(string $code): bool
     {
         return $this->client->getHttpClient()
-            ->delete("/urls/{$code}")
+            ->delete("/v1/urls/{$code}")
             ->throw()
             ->successful();
     }
@@ -96,7 +96,7 @@ class UrlResource
     public function toggle(string $code): array
     {
         return $this->client->getHttpClient()
-            ->patch("/urls/{$code}/toggle")
+            ->patch("/v1/urls/{$code}/toggle")
             ->throw()
             ->json();
     }
@@ -110,7 +110,7 @@ class UrlResource
     public function export(string $code): string
     {
         return $this->client->getHttpClient()
-            ->get("/urls/{$code}/export")
+            ->get("/v1/urls/{$code}/export")
             ->throw()
             ->body();
     }

@@ -21,7 +21,7 @@ class WorkspaceResource
     public function list(): array
     {
         return $this->client->getHttpClient()
-            ->get('/workspaces')
+            ->get('/v1/workspaces')
             ->throw()
             ->json();
     }
@@ -35,7 +35,7 @@ class WorkspaceResource
     public function create(array $data): array
     {
         return $this->client->getHttpClient()
-            ->post('/workspaces', $data)
+            ->post('/v1/workspaces', $data)
             ->throw()
             ->json();
     }
@@ -50,7 +50,7 @@ class WorkspaceResource
     public function update(string $id, array $data): array
     {
         return $this->client->getHttpClient()
-            ->patch("/workspaces/{$id}", $data)
+            ->patch("/v1/workspaces/{$id}", $data)
             ->throw()
             ->json();
     }
@@ -64,7 +64,7 @@ class WorkspaceResource
     public function switch(string $id): array
     {
         return $this->client->getHttpClient()
-            ->post("/workspaces/{$id}/switch")
+            ->post("/v1/workspaces/{$id}/switch")
             ->throw()
             ->json();
     }

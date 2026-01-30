@@ -21,7 +21,7 @@ class BioResource
     public function show(): array
     {
         return $this->client->getHttpClient()
-            ->get('/bio')
+            ->get('/v1/bio')
             ->throw()
             ->json();
     }
@@ -35,7 +35,7 @@ class BioResource
     public function store(array $data): array
     {
         return $this->client->getHttpClient()
-            ->post('/bio', $data)
+            ->post('/v1/bio', $data)
             ->throw()
             ->json();
     }
@@ -49,7 +49,7 @@ class BioResource
     public function addLink(array $data): array
     {
         return $this->client->getHttpClient()
-            ->post('/bio/links', $data)
+            ->post('/v1/bio/links', $data)
             ->throw()
             ->json();
     }
@@ -64,7 +64,7 @@ class BioResource
     public function updateLink(string $id, array $data): array
     {
         return $this->client->getHttpClient()
-            ->patch("/bio/links/{$id}", $data)
+            ->patch("/v1/bio/links/{$id}", $data)
             ->throw()
             ->json();
     }
@@ -78,7 +78,7 @@ class BioResource
     public function deleteLink(string $id): bool
     {
         return $this->client->getHttpClient()
-            ->delete("/bio/links/{$id}")
+            ->delete("/v1/bio/links/{$id}")
             ->throw()
             ->successful();
     }
@@ -92,7 +92,7 @@ class BioResource
     public function trackClick(string $id): array
     {
         return $this->client->getHttpClient()
-            ->post("/bio/links/{$id}/click")
+            ->post("/v1/bio/links/{$id}/click")
             ->throw()
             ->json();
     }
@@ -106,7 +106,7 @@ class BioResource
     public function reorderLinks(array $order): array
     {
         return $this->client->getHttpClient()
-            ->post('/bio/links/reorder', ['order' => $order])
+            ->post('/v1/bio/links/reorder', ['order' => $order])
             ->throw()
             ->json();
     }

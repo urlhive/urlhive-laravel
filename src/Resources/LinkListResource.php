@@ -21,7 +21,7 @@ class LinkListResource
     public function list(): array
     {
         return $this->client->getHttpClient()
-            ->get('/link-lists')
+            ->get('/v1/link-lists')
             ->throw()
             ->json();
     }
@@ -35,7 +35,7 @@ class LinkListResource
     public function create(array $data): array
     {
         return $this->client->getHttpClient()
-            ->post('/link-lists', $data)
+            ->post('/v1/link-lists', $data)
             ->throw()
             ->json();
     }
@@ -49,7 +49,7 @@ class LinkListResource
     public function get(string $id): array
     {
         return $this->client->getHttpClient()
-            ->get("/link-lists/{$id}")
+            ->get("/v1/link-lists/{$id}")
             ->throw()
             ->json();
     }
@@ -64,7 +64,7 @@ class LinkListResource
     public function update(string $id, array $data): array
     {
         return $this->client->getHttpClient()
-            ->patch("/link-lists/{$id}", $data)
+            ->patch("/v1/link-lists/{$id}", $data)
             ->throw()
             ->json();
     }
@@ -78,7 +78,7 @@ class LinkListResource
     public function delete(string $id): bool
     {
         return $this->client->getHttpClient()
-            ->delete("/link-lists/{$id}")
+            ->delete("/v1/link-lists/{$id}")
             ->throw()
             ->successful();
     }
@@ -93,7 +93,7 @@ class LinkListResource
     public function addItem(string $id, array $data): array
     {
         return $this->client->getHttpClient()
-            ->post("/link-lists/{$id}/items", $data)
+            ->post("/v1/link-lists/{$id}/items", $data)
             ->throw()
             ->json();
     }
@@ -108,7 +108,7 @@ class LinkListResource
     public function updateItem(string $itemId, array $data): array
     {
         return $this->client->getHttpClient()
-            ->patch("/link-lists/items/{$itemId}", $data)
+            ->patch("/v1/link-lists/items/{$itemId}", $data)
             ->throw()
             ->json();
     }
@@ -122,7 +122,7 @@ class LinkListResource
     public function deleteItem(string $itemId): bool
     {
         return $this->client->getHttpClient()
-            ->delete("/link-lists/items/{$itemId}")
+            ->delete("/v1/link-lists/items/{$itemId}")
             ->throw()
             ->successful();
     }
@@ -136,7 +136,7 @@ class LinkListResource
     public function trackItemClick(string $id): array
     {
         return $this->client->getHttpClient()
-            ->post("/link-lists/items/{$id}/click")
+            ->post("/v1/link-lists/items/{$id}/click")
             ->throw()
             ->json();
     }
