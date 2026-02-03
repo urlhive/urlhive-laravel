@@ -22,7 +22,7 @@ class UrlResource
      */
     public function shorten(string $url, array $options = []): array
     {
-        $payload = array_merge(['url' => $url], $options);
+        $payload = ['url' => $url, ...$options];
 
         return $this->client->getHttpClient()
             ->post('/v1/shorten', $payload)
