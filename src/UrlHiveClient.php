@@ -15,6 +15,7 @@ class UrlHiveClient
 {
     protected array $config;
     protected ?PendingRequest $http = null;
+    protected ?UrlResource $url = null;
 
     public function __construct(array $config)
     {
@@ -42,7 +43,11 @@ class UrlHiveClient
 
     public function url(): UrlResource
     {
-        return new UrlResource($this);
+        if (!$this->url) {
+            $this->url = new UrlResource($this);
+        }
+
+        return $this->url;
     }
 
     public function bio(): BioResource
