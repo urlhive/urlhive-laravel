@@ -38,7 +38,7 @@ class UrlHiveClient
 
     public function getHttpClient(): PendingRequest
     {
-        return $this->http();
+        return clone $this->http();
     }
 
     public function url(): UrlResource
