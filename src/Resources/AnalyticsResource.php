@@ -26,4 +26,31 @@ class AnalyticsResource
             ->throw()
             ->json();
     }
+    /**
+     * Track a conversion (S2S).
+     *
+     * @param array $data
+     * @return array
+     */
+    public function trackConversion(array $data): array
+    {
+        return $this->client->getHttpClient()
+            ->post('/v1/track/conversion', $data)
+            ->throw()
+            ->json();
+    }
+
+    /**
+     * Get customer journey.
+     *
+     * @param string $hiveId
+     * @return array
+     */
+    public function journey(string $hiveId): array
+    {
+        return $this->client->getHttpClient()
+            ->get("/v1/analytics/journey/{$hiveId}")
+            ->throw()
+            ->json();
+    }
 }

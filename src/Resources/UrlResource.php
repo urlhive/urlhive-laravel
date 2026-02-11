@@ -114,4 +114,17 @@ class UrlResource
             ->throw()
             ->body();
     }
+    /**
+     * Get URL conversions.
+     *
+     * @param string $code
+     * @return array
+     */
+    public function conversions(string $code): array
+    {
+        return $this->client->getHttpClient()
+            ->get("/v1/urls/{$code}/conversions")
+            ->throw()
+            ->json();
+    }
 }

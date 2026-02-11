@@ -60,17 +60,17 @@ class UrlHiveClient
         return new AnalyticsResource($this);
     }
 
-    public function linkLists(): LinkListResource
+    public function linkList(): LinkListResource
     {
         return new LinkListResource($this);
     }
 
-    public function workspaces(): WorkspaceResource
+    public function workspace(): WorkspaceResource
     {
         return new WorkspaceResource($this);
     }
 
-    public function pixels(): PixelResource
+    public function pixel(): PixelResource
     {
         return new PixelResource($this);
     }

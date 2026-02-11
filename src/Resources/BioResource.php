@@ -110,4 +110,44 @@ class BioResource
             ->throw()
             ->json();
     }
+    /**
+     * Get Bio Page statistics.
+     *
+     * @param array $params
+     * @return array
+     */
+    public function stats(array $params = []): array
+    {
+        return $this->client->getHttpClient()
+            ->get('/v1/bio/stats', $params)
+            ->throw()
+            ->json();
+    }
+
+    /**
+     * Export Bio Page analytics.
+     *
+     * @return string
+     */
+    public function export(): string
+    {
+        return $this->client->getHttpClient()
+            ->get('/v1/bio/export')
+            ->throw()
+            ->body();
+    }
+
+    /**
+     * Get Bio Link statistics.
+     *
+     * @param string $id
+     * @return array
+     */
+    public function linkStats(string $id): array
+    {
+        return $this->client->getHttpClient()
+            ->get("/v1/bio/links/{$id}/stats")
+            ->throw()
+            ->json();
+    }
 }

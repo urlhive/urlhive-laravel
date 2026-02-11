@@ -83,7 +83,7 @@ it('can create link list', function () {
         '*/link-lists' => Http::response(['id' => 'list-123'], 201),
     ]);
 
-    $response = UrlHive::linkLists()->create(['name' => 'My List']);
+    $response = UrlHive::linkList()->create(['name' => 'My List']);
 
     expect($response['id'])->toBe('list-123');
 });
@@ -93,7 +93,7 @@ it('can list link lists', function () {
         '*/link-lists' => Http::response(['data' => []], 200),
     ]);
 
-    $response = UrlHive::linkLists()->list();
+    $response = UrlHive::linkList()->list();
 
     expect($response['data'])->toBeArray();
 });
@@ -103,7 +103,7 @@ it('can update link list', function () {
         '*/link-lists/list-123' => Http::response(['success' => true], 200),
     ]);
 
-    $response = UrlHive::linkLists()->update('list-123', ['name' => 'Updated Name']);
+    $response = UrlHive::linkList()->update('list-123', ['name' => 'Updated Name']);
 
     expect($response['success'])->toBeTrue();
 });
@@ -113,7 +113,7 @@ it('can delete link list', function () {
         '*/link-lists/list-123' => Http::response([], 200),
     ]);
 
-    $response = UrlHive::linkLists()->delete('list-123');
+    $response = UrlHive::linkList()->delete('list-123');
 
     expect($response)->toBeTrue();
 });
@@ -123,7 +123,7 @@ it('can add item to link list', function () {
         '*/link-lists/list-123/items' => Http::response(['id' => 'item-123'], 201),
     ]);
 
-    $response = UrlHive::linkLists()->addItem('list-123', ['url' => 'https://example.com']);
+    $response = UrlHive::linkList()->addItem('list-123', ['url' => 'https://example.com']);
 
     expect($response['id'])->toBe('item-123');
 });
@@ -133,7 +133,7 @@ it('can update link list item', function () {
         '*/link-lists/items/item-123' => Http::response(['success' => true], 200),
     ]);
 
-    $response = UrlHive::linkLists()->updateItem('item-123', ['title' => 'New Title']);
+    $response = UrlHive::linkList()->updateItem('item-123', ['title' => 'New Title']);
 
     expect($response['success'])->toBeTrue();
 });
@@ -143,7 +143,7 @@ it('can delete link list item', function () {
         '*/link-lists/items/item-123' => Http::response([], 200),
     ]);
 
-    $response = UrlHive::linkLists()->deleteItem('item-123');
+    $response = UrlHive::linkList()->deleteItem('item-123');
 
     expect($response)->toBeTrue();
 });
@@ -153,7 +153,7 @@ it('can track link list item click', function () {
         '*/link-lists/items/item-123/click' => Http::response(['success' => true], 200),
     ]);
 
-    $response = UrlHive::linkLists()->trackItemClick('item-123');
+    $response = UrlHive::linkList()->trackItemClick('item-123');
 
     expect($response['success'])->toBeTrue();
 });
@@ -163,7 +163,7 @@ it('can create workspace', function () {
         '*/workspaces' => Http::response(['id' => 'ws-123'], 201),
     ]);
 
-    $response = UrlHive::workspaces()->create(['name' => 'My Workspace']);
+    $response = UrlHive::workspace()->create(['name' => 'My Workspace']);
 
     expect($response['id'])->toBe('ws-123');
 });
@@ -173,7 +173,7 @@ it('can update workspace', function () {
         '*/workspaces/ws-123' => Http::response(['success' => true], 200),
     ]);
 
-    $response = UrlHive::workspaces()->update('ws-123', ['name' => 'Updated Workspace']);
+    $response = UrlHive::workspace()->update('ws-123', ['name' => 'Updated Workspace']);
 
     expect($response['success'])->toBeTrue();
 });
@@ -183,7 +183,7 @@ it('can switch workspace', function () {
         '*/workspaces/ws-123/switch' => Http::response(['success' => true], 200),
     ]);
 
-    $response = UrlHive::workspaces()->switch('ws-123');
+    $response = UrlHive::workspace()->switch('ws-123');
 
     expect($response['success'])->toBeTrue();
 });
@@ -193,7 +193,7 @@ it('can create pixel', function () {
         '*/pixels' => Http::response(['id' => 'pix-123'], 201),
     ]);
 
-    $response = UrlHive::pixels()->create(['name' => 'FB Pixel', 'type' => 'facebook']);
+    $response = UrlHive::pixel()->create(['name' => 'FB Pixel', 'type' => 'facebook']);
 
     expect($response['id'])->toBe('pix-123');
 });
@@ -203,7 +203,7 @@ it('can list pixels', function () {
         '*/pixels' => Http::response(['data' => []], 200),
     ]);
 
-    $response = UrlHive::pixels()->list();
+    $response = UrlHive::pixel()->list();
 
     expect($response['data'])->toBeArray();
 });

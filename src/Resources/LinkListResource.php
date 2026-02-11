@@ -140,4 +140,61 @@ class LinkListResource
             ->throw()
             ->json();
     }
+    /**
+     * Reorder Link List Items.
+     *
+     * @param string $id
+     * @param array $order Array of Item IDs.
+     * @return array
+     */
+    public function reorderItems(string $id, array $order): array
+    {
+        return $this->client->getHttpClient()
+            ->post("/v1/link-lists/{$id}/items/reorder", ['order' => $order])
+            ->throw()
+            ->json();
+    }
+
+    /**
+     * Get Link List statistics.
+     *
+     * @param string $id
+     * @param array $params
+     * @return array
+     */
+    public function stats(string $id, array $params = []): array
+    {
+        return $this->client->getHttpClient()
+            ->get("/v1/link-lists/{$id}/stats", $params)
+            ->throw()
+            ->json();
+    }
+
+    /**
+     * Export Link List analytics.
+     *
+     * @param string $id
+     * @return string
+     */
+    public function export(string $id): string
+    {
+        return $this->client->getHttpClient()
+            ->get("/v1/link-lists/{$id}/export")
+            ->throw()
+            ->body();
+    }
+
+    /**
+     * Get Link List Item statistics.
+     *
+     * @param string $itemId
+     * @return array
+     */
+    public function itemStats(string $itemId): array
+    {
+        return $this->client->getHttpClient()
+            ->get("/v1/link-lists/items/{$itemId}/stats")
+            ->throw()
+            ->json();
+    }
 }
