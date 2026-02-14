@@ -16,6 +16,11 @@ class UrlHiveClient
     protected array $config;
     protected ?PendingRequest $http = null;
     protected ?UrlResource $url = null;
+    protected ?BioResource $bio = null;
+    protected ?AnalyticsResource $analytics = null;
+    protected ?LinkListResource $linkList = null;
+    protected ?WorkspaceResource $workspace = null;
+    protected ?PixelResource $pixel = null;
 
     public function __construct(array $config)
     {
@@ -52,26 +57,46 @@ class UrlHiveClient
 
     public function bio(): BioResource
     {
-        return new BioResource($this);
+        if (!$this->bio) {
+            $this->bio = new BioResource($this);
+        }
+
+        return $this->bio;
     }
 
     public function analytics(): AnalyticsResource
     {
-        return new AnalyticsResource($this);
+        if (!$this->analytics) {
+            $this->analytics = new AnalyticsResource($this);
+        }
+
+        return $this->analytics;
     }
 
     public function linkList(): LinkListResource
     {
-        return new LinkListResource($this);
+        if (!$this->linkList) {
+            $this->linkList = new LinkListResource($this);
+        }
+
+        return $this->linkList;
     }
 
     public function workspace(): WorkspaceResource
     {
-        return new WorkspaceResource($this);
+        if (!$this->workspace) {
+            $this->workspace = new WorkspaceResource($this);
+        }
+
+        return $this->workspace;
     }
 
     public function pixel(): PixelResource
     {
-        return new PixelResource($this);
+        if (!$this->pixel) {
+            $this->pixel = new PixelResource($this);
+        }
+
+        return $this->pixel;
     }
 }
